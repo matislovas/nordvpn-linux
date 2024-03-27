@@ -179,7 +179,8 @@ func GetConfigDirPath(homeDirectory string) (string, error) {
 
 	userConfigPath := filepath.Join(homeDirectory, ".config", "nordvpn")
 
-	if err := EnsureDir(userConfigPath); err != nil {
+	// Add `none` to the path as EnsureDir strips the last element of the path
+	if err := EnsureDir(filepath.Join(userConfigPath, "none")); err != nil {
 		return "", fmt.Errorf("ensuring config dir: %w", err)
 	}
 	return userConfigPath, nil
