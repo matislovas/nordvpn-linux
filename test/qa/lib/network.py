@@ -226,4 +226,4 @@ def unblock():
 
 def get_external_device_ip() -> str:
     """Returns external device IP."""
-    return requests.get(API_EXTERNAL_IP, timeout=5).json().get("ip")
+    return requests.get(lib.API_EXTERNAL_IP, timeout=5).json().get("ip")
